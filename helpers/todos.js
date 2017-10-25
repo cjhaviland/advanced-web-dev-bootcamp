@@ -30,7 +30,7 @@ exports.getTodo = function(req, res){
    });
 }
 
-exports.updateTodo = function(res, req){
+exports.updateTodo = function(req, res){
    db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true}) //will respond with the updated version
    .then(function(todo){
        res.json(todo);
@@ -40,7 +40,7 @@ exports.updateTodo = function(res, req){
    });
 }
 
-exports.deleteTodo = function(res, req){
+exports.deleteTodo = function(req, res){
     db.Todo.remove({_id: req.params.todoId})
     .then(function(){
         res.json({message: 'We deleted it!'})
